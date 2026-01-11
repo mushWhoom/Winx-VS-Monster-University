@@ -1,0 +1,239 @@
+/* =========================================
+   CLEAN & FIXED CSS - WinxVSMonsUni.css
+   ========================================= */
+
+body {
+    text-align: center;
+    background-image: url('we.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+#board {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.164), rgba(255, 255, 255, 0.175)), url('bgr.png');
+    background-size: cover;       
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+/* OVERLAY START */
+#startOverlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2); 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    z-index: 10002;
+}
+
+#start-img {
+    width: 300px;
+    height: auto;
+    display: block;
+    position: relative; 
+}
+
+.btn-start {
+    position: absolute; 
+    top: 70%; 
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 170px; 
+    height: 75px;
+    background-image: url('pb.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    /* ANIMASI GELEMBUNG - Tambahin ini */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* EFEK GELEMBUNG PAS DISENTUH KURSOR */
+.btn-start:hover {
+    /* Translate tetep dipake biar posisinya gak geser dari tengah */
+    transform: translate(-50%, 0) scale(1.2); 
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.btn-start:active {
+    transform: translate(-50%, 0) scale(0.5);
+}
+
+/* GAME OVER OVERLAY */
+#gameOverOverlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2); 
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+#game-over-img {
+    width: 300px;
+    height: auto;
+    display: block;
+    position: relative; 
+}
+
+.btn-gambar {
+    position: absolute; 
+    top: 70%; 
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 170px; 
+    height: 75px;
+    background-image: url('retry.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+/* CUSTOM CHARACTER BUTTON */
+.btn-custom-trigger {
+    position: fixed;
+    top: 5px;
+    right: 28px;
+    z-index: 9999;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* efek gelembung pas hover*/
+.btn-custom-trigger:hover {
+    transform: scale(1.2); /* Membesar 20% */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+/* EFEK PAS DIKLIK */
+.btn-custom-trigger:active {
+    transform: scale(0.9);
+}
+
+/* Pastikan gambarnya ngikutin ukuran button */
+.btn-custom-trigger img {
+    width: 130px;
+    height: auto;
+    display: block;
+}
+
+.btn-custom-trigger img {
+    width: 170px;
+    height: auto;
+    transition: transform 0.2s;
+}
+
+/* CONTAINER UTAMA POPUP - Bikin nindih sempurna */
+.char-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Nanti diubah JS jadi flex */
+    align-items: center;
+    justify-content: center;
+    z-index: 10005;
+    background: rgba(0, 0, 0, 0.107); /* Gelapin dikit background luar biar fokus */
+}
+
+/* KONTEN POPUP */
+.char-popup-content {
+    position: relative;
+    width: 635px; /* Sesuaikan sama ukuran popup-base lo */
+    height: 140%;
+    background: transparent !important;
+}
+
+.popup-base {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* AREA KARAKTER (DI TENAH TV) */
+.char-display-area {
+    position: absolute;
+    top: 51.5%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: transparent !important;
+    /* Pastikan pointer-events auto supaya hover-nya kedetek */
+    pointer-events: auto !important; 
+}
+
+/* TOMBOL KARAKTER - MATIIN BACKGROUND PUTIH, NYALAIN ANIMASI */
+#char-btn {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+    /* Hilangin outline biar gak ada kotak biru pas diklik */
+    outline: none !important;
+}
+
+#char-btn:active {
+    transform: scale(0.9); /* Animasi menciut pas diklik */
+}
+
+/* Style dasar gambar (pastiin udah ada transition-nya) */
+#current-char-img {
+    width: 400px; 
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    background: transparent !important;
+    image-rendering: pixelated;
+    
+    /* Transition buat animasi ganti karakter DAN animasi hover */
+    /* cubic-bezier ini yang bikin efek 'membal' kayak gelembung */
+    transition: opacity 0.3s ease-in-out, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+/* EFEK GELEMBUNG PAS DISENTUH KURSOR */
+#current-char-img:hover {
+    /* Angka 1.2 berarti membesar 20%, lo bisa ganti jadi 1.3 kalau mau lebih gede lagi */
+    transform: scale(1.15); 
+    /* Opsional: kasih sedikit cahaya biar makin cakep */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+}
+
+
+/* TOMBOL NAVIGASI KIRI KANAN */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+}
+.prev { left: 20px; }
+.next { right: 20px; }

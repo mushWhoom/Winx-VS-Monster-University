@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Title>Winx VS Monster University</Title>
+    <link rel="stylesheet" href="WinxVSMonsUni.css">
+    <script src="WinxVSMonsUni.js"></script>
+  </head>
+  <body>
+    <button type="button" onclick="toggleCustomMenu()" class="btn-custom-trigger">
+    <img src="./p.png" alt="Custom Character">
+</button>
+
+    <div id="character-selection-popup" class="char-popup-overlay">
+    <div class="char-popup-content">
+        <img src="displayCustom.jpg" class="popup-base" alt="Background">
+        
+        <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+        
+        <div class="char-display-area">
+            <button id="char-btn" onclick="selectCharacter()">
+                <img id="current-char-img" src="./charaFlora.png" alt="Winx">
+            </button>
+        </div>
+        
+        <button class="nav-btn next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+    </div>
+</div>
+
+    <canvas id="board"></canvas>
+
+    <div id="startOverlay">
+        <img src="start.png" id="start-img">
+        <button class="btn-start" onclick="startGame()"></button>
+    </div>
+
+<div id="gameOverOverlay">
+    <img src="fixedGameOver-removebg-preview.png" id="game-over-img">
+    <button class="btn-gambar" onclick="restartGame()"></button>
+</div>
+
+    <script src="WinxVSMonsUni.js"></script>
+</body>
+</html>
